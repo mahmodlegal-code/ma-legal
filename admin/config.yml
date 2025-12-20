@@ -1,20 +1,55 @@
-backend:
-  name: github
-  repo: malegal/ma-legal
-  branch: main
+import { TinaModuleFetch } from '@tinacms/auth';
 
-media_folder: "images/blog"
-public_folder: "/images/blog"
-
-collections:
-  - name: "blog"
-    label: "المدونة القانونية"
-    folder: "blog"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "العنوان", name: "title", widget: "string" }
-      - { label: "تاريخ النشر", name: "date", widget: "datetime" }
-      - { label: "صورة بارزة (اختياري)", name: "image", widget: "image", required: false }
-      - { label: "وصف قصير", name: "description", widget: "text" }
-      - { label: "المحتوى الكامل", name: "body", widget: "markdown" }
+export default {
+  clientId: 'YOUR_CLIENT_ID', // هتحتاج تسجل في tina.io وتاخد clientId (مجاني).
+  branch: 'main',
+  token: 'YOUR_TOKEN', // من tina.io.
+  build: {
+    outputFolder: "admin",
+    publicFolder: "",
+  },
+  media: {
+    tina: {
+      mediaRoot: "images/blog",
+      publicFolder: "",
+    },
+  },
+  schema: {
+    collections: [
+      {
+        name: "blog",
+        label: "المدونة القانونية",
+        path: "blog",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "العنوان",
+          },
+          {
+            type: "datetime",
+            name: "date",
+            label: "تاريخ النشر",
+          },
+          {
+            type: "image",
+            name: "image",
+            label: "صورة بارزة",
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "وصف قصير",
+            ui: { component: "textarea" },
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "المحتوى",
+            isBody: true,
+          },
+        ],
+      },
+    ],
+  },
+};
