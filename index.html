@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- لتحويل Markdown في الـ modal -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- لتحويل Markdown -->
     <style>
         :root {
             --primary-dark: #020617;
@@ -92,7 +92,7 @@
             
             <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
                 <a href="#booking" class="gold-btn px-12 py-4 rounded-xl text-lg font-black uppercase tracking-widest">طلب استشارة قانونية</a>
-                <a href="#booking" onclick="switchTab('visit'); event.preventDefault();" class="px-12 py-4 border border-white/10 rounded-xl hover:bg-white/5 transition text-white">حجز موعد مقابلة</a>
+                <a href="#booking" onclick="switchTab('visit'); document.getElementById('booking').scrollIntoView({behavior: 'smooth'});" class="px-12 py-4 border border-white/10 rounded-xl hover:bg-white/5 transition text-white">حجز موعد مقابلة</a>
             </div>
         </div>
     </section>
@@ -223,7 +223,7 @@
                     <input type="text" id="visitName" placeholder="الاسم بالكامل" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-gold-solid text-white" required>
                     <input type="tel" id="visitPhone" placeholder="رقم الهاتف" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-gold-solid text-white" required>
                     <input type="date" id="visitDate" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-gold-solid text-white" required>
-                    <button type="submit" class="gold-btn w-full py-4 rounded-xl text-lg font-black">إرسال طلب الحجز عبر البريد</button>
+                    <button type="submit" class="gold-btn w-full py-4 rounded-xl text-lg font-black">إرسال عبر واتساب</button>
                 </form>
             </div>
         </div>
@@ -324,7 +324,7 @@
         }
 
         function openModal(title, img, body) {
-            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-title').innerHTML = title;
             document.getElementById('modal-image').src = img;
             document.getElementById('modal-body').innerHTML = marked.parse(body);
             document.getElementById('post-modal').classList.remove('hidden');
@@ -348,8 +348,8 @@
             const name = document.getElementById('visitName').value;
             const phone = document.getElementById('visitPhone').value;
             const date = document.getElementById('visitDate').value;
-            const body = `طلب حجز موعد مقابلة\nالاسم: \( {name}\nالهاتف: \){phone}\nالتاريخ: ${date}`;
-            window.location.href = `mailto:ma.legal.eg@outlook.com?subject=طلب حجز&body=${encodeURIComponent(body)}`;
+            const text = `*طلب حجز موعد مقابلة*\nالاسم: \( {name}\nالهاتف: \){phone}\nالتاريخ المقترح: ${date}`;
+            window.open(`https://wa.me/201101076000?text=${encodeURIComponent(text)}`, '_blank');
         });
 
         loadBlogPosts();
