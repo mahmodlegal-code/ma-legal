@@ -75,35 +75,15 @@
         </div>
     </div>
 
-    <section id="hero" <section id="hero" 
-         class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 relative overflow-hidden bg-cover bg-center bg-no-repeat"
+    section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 relative overflow-hidden bg-cover bg-center bg-no-repeat"
          style="background-image: url('https://raw.githubusercontent.com/malegal/ma-legal/main/images/law-office-hero.jpg');">
+    <!-- overlay داكن لتحسين القراءة -->
+    <div class="absolute inset-0 bg-black/60"></div>
     
-    <!-- طبقة شفافة داكنة أخف -->
-    <div class="absolute inset-0 bg-black/40"></div>
-    
-    <!-- النصوص فوق الخلفية -->
-    <div class="relative z-10 max-w-4xl mx-auto">
-        <span class="block gold-text text-xs font-black tracking-[0.5em] mb-8 uppercase">
-            Professional Legal Counsel
-        </span>
-        
-        <h1 class="mb-8">
-            <span class="block text-5xl sm:text-7xl md:text-8xl font-black serif-font gold-text">
-                محمود عبد الحميد
-            </span>
-        </h1>
-        
-        <p class="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl mx-auto">
-            المحامي بالنقض والدستورية العليا – خبرة قانونية راسخة ورؤية حديثة لخدمة الأفراد والشركات.
-        </p>
-    </div>
-</section>
-        
-        <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <a href="#booking" class="gold-btn px-12 py-4 rounded-xl text-lg font-black uppercase tracking-widest">طلب استشارة قانونية</a>
-            <a href="#booking" onclick="switchTab('visit'); document.getElementById('booking').scrollIntoView({behavior: 'smooth'});" class="px-12 py-4 border border-white/10 rounded-xl hover:bg-white/5 transition text-white">حجز موعد مقابلة</a>
-        </div>
+    <div class="relative z-10">
+        <span class="block gold-text text-xs font-black tracking-[0.5em] mb-8 uppercase">Professional Legal Counsel</span>
+        <h1 class="mb-8"><span class="block text-5xl sm:text-7xl md:text-8xl font-black serif-font gold-text">محمود عبد الحميد</span></h1>
+        <!-- باقي المحتوى كما هو... -->
     </div>
 </section>
 
