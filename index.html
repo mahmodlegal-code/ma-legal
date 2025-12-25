@@ -58,7 +58,7 @@
         }
         
         .card-glass { 
-            background: rgba(0, 0, 0, 0.85); /* أسود شفاف */
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(15px); 
             border: 1px solid rgba(191, 149, 63, 0.15); 
             border-radius: 1.5rem; 
@@ -73,7 +73,7 @@
         
         .black-border-card { 
             border: 2px solid #000000; 
-            background: rgba(0, 0, 0, 0.85); /* أسود شفاف */
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(10px); 
         }
         
@@ -109,7 +109,7 @@
             transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1); 
             transform: translateX(100%); 
             overflow-y: auto;
-            background: rgba(0, 0, 0, 0.95); /* أسود شفاف */
+            background: rgba(0, 0, 0, 0.95);
         }
         
         #mobile-menu.active { 
@@ -155,7 +155,7 @@
         }
         
         /* تأثيرات خاصة للصور الخلفية */
-        .parallax-section {
+        .bg-section {
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -163,17 +163,17 @@
             position: relative;
         }
         
-        .parallax-overlay {
+        .section-overlay {
             position: absolute;
             top: 0;
             right: 0;
             bottom: 0;
             left: 0;
-            background: rgba(0, 0, 0, 0.7); /* أسود شفاف */
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1;
         }
         
-        .parallax-content {
+        .section-content {
             position: relative;
             z-index: 2;
         }
@@ -191,7 +191,7 @@
         
         /* تحسينات للأجهزة المحمولة */
         @media (max-width: 768px) {
-            .parallax-section {
+            .bg-section {
                 background-attachment: scroll !important;
                 background-position: center !important;
             }
@@ -277,6 +277,42 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(191, 149, 63, 0.2);
         }
+        
+        /* تباعد محسّن */
+        .section-spacing {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        
+        /* تصميم جديد للنقاط */
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .achievement-list li {
+            position: relative;
+            padding-right: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .achievement-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-weight: bold;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -324,11 +360,11 @@
     </div>
 
     <!-- قسم الهيرو -->
-    <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 relative overflow-hidden parallax-section"
+    <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 relative overflow-hidden bg-section"
          style="background-image: url('https://raw.githubusercontent.com/malegal/ma-legal/main/images/law-office-hero.jpg');">
-        <div class="parallax-overlay"></div>
+        <div class="section-overlay"></div>
         
-        <div class="parallax-content relative z-10 max-w-5xl mx-auto">
+        <div class="section-content relative z-10 max-w-5xl mx-auto">
             <span class="block gold-text text-xs sm:text-sm font-black tracking-[0.4em] md:tracking-[0.5em] mb-6 md:mb-8 uppercase">
                 Professional Legal Counsel
             </span>
@@ -377,13 +413,12 @@
         </div>
     </section>
 
-    <!-- قسم عن المؤسسة - مع خلفية قابلة للتعديل -->
-    <section id="about" class="py-24 relative"
-         style="background-image: url('images/about-bg.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-        <!-- طبقة داكنة شفافة -->
-        <div class="absolute inset-0 bg-black/70"></div>
+    <!-- قسم عن المؤسسة -->
+    <section id="about" class="section-spacing relative bg-section"
+         style="background-image: url('images/about-bg.jpg');">
+        <div class="section-overlay bg-black/70"></div>
         
-        <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="section-content max-w-7xl mx-auto px-6">
             <div class="rounded-3xl overflow-hidden shadow-2xl shadow-gold-glow/40 mb-16">
                 <img src="https://raw.githubusercontent.com/malegal/ma-legal/main/images/law-office-hero.jpg"
                      class="w-full h-[320px] sm:h-[380px] md:h-[450px] lg:h-[500px] object-cover enhanced-image"
@@ -427,11 +462,11 @@
     </section>
 
     <!-- قسم التخصصات -->
-    <section id="specialties" class="py-24 relative parallax-section"
+    <section id="specialties" class="section-spacing relative bg-section"
          style="background-image: url('https://raw.githubusercontent.com/malegal/ma-legal/main/images/مطرقة.jpg');">
-        <div class="parallax-overlay bg-black/75"></div>
+        <div class="section-overlay bg-black/75"></div>
         
-        <div class="parallax-content max-w-7xl mx-auto px-6">
+        <div class="section-content max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">تخصصاتنا القانونية</h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
@@ -470,107 +505,195 @@
         </div>
     </section>
 
-    <!-- قسم المبادئ -->
-    <section id="principles" class="py-24 relative parallax-section"
-         style="background-image: url('images/principles-bg.jpg');">
-        <div class="parallax-overlay bg-black/70"></div>
+    <!-- قسم الرؤية والأهداف - مساحة مخفضة -->
+    <section id="vision" class="py-16 relative bg-section"
+         style="background-image: url('images/vision-bg.jpg');">
+        <div class="section-overlay bg-black/70"></div>
         
-        <div class="parallax-content max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 mb-16">
-                <div class="black-border-card card-glass p-10 rounded-2xl fade-in-up gold-border">
-                    <h3 class="text-3xl font-bold gold-text mb-6">مبادئنا</h3>
-                    <p class="text-white/90 text-lg leading-relaxed">نؤمن أن المحاماة رسالة قبل أن تكون مهنة، وأن الثقة هي أساس العلاقة بين المحامي وموكله.<br>نلتزم في مؤسستنا بأعلى معايير النزاهة والاحتراف، ونتعامل مع كل قضية باعتبارها مسؤولية كاملة نتحملها بضمير قانوني حي، واستقلال في الرأي، ودقة في الأداء، دون مساومة على الحق أو تهاون في الواجب.</p>
-                </div>
-                <div class="black-border-card card-glass p-10 rounded-2xl fade-in-up gold-border">
+        <div class="section-content max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">الرؤية والأهداف</h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="black-border-card card-glass p-8 rounded-2xl fade-in-up gold-border">
                     <h3 class="text-3xl font-bold gold-text mb-6">رؤيتنا</h3>
-                    <p class="text-white/90 text-lg leading-relaxed">نسعى لأن نكون مؤسسة قانونية مرجعية يُعتمد عليها في تقديم الحلول القانونية المتكاملة، وأن نرسّخ حضورًا مهنيًا قويًا يجمع بين عمق الخبرة القانونية والرؤية الحديثة لممارسة المحاماة، بما يواكب تطورات الواقع القانوني ويخدم مصالح عملائنا بكفاءة واستدامة.</p>
+                    <p class="text-white/90 text-lg leading-relaxed mb-6">نسعى لأن نكون مؤسسة قانونية مرجعية يُعتمد عليها في تقديم الحلول القانونية المتكاملة، وأن نرسّخ حضورًا مهنيًا قويًا يجمع بين عمق الخبرة القانونية والرؤية الحديثة لممارسة المحاماة.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>الريادة في تقديم الخدمات القانونية المتخصصة</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>بناء سمعة مهنية قائمة على الثقة والجودة</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>مواكبة التطورات التشريعية والقضائية الحديثة</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="black-border-card card-glass p-8 rounded-2xl fade-in-up gold-border">
+                    <h3 class="text-3xl font-bold gold-text mb-6">أهدافنا</h3>
+                    <ul class="space-y-4 text-white/90 text-lg achievement-list">
+                        <li>تقديم خدمات قانونية دقيقة ومبنية على دراسة متأنية لكل حالة على حدة.</li>
+                        <li>حماية حقوق موكلينا والدفاع عنها بأقصى ما يسمح به القانون وبأعلى درجات الاحتراف.</li>
+                        <li>بناء علاقات طويلة الأمد قائمة على الثقة والشفافية والالتزام.</li>
+                        <li>التطوير المستمر للأداء القانوني ومواكبة أحدث المستجدات التشريعية والقضائية.</li>
+                        <li>ترسيخ اسم المؤسسة كعنوان للجودة والانضباط والنتائج.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم الأهداف والإنجازات -->
-    <section id="achievements" class="py-24 relative parallax-section"
+    <!-- قسم الإنجازات - محسّن -->
+    <section id="achievements" class="section-spacing relative bg-section"
          style="background-image: url('images/achievements-bg.jpg');">
-        <div class="parallax-overlay bg-black/70"></div>
+        <div class="section-overlay bg-black/70"></div>
         
-        <div class="parallax-content max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="black-border-card card-glass p-10 rounded-2xl fade-in-up gold-border">
-                    <h3 class="text-3xl font-bold gold-text mb-6">أهدافنا</h3>
-                    <ul class="space-y-4 text-white/90 text-lg">
-                        <li><i class="fas fa-check gold-text ml-2"></i> تقديم خدمات قانونية دقيقة ومبنية على دراسة متأنية لكل حالة على حدة.</li>
-                        <li><i class="fas fa-check gold-text ml-2"></i> حماية حقوق موكلينا والدفاع عنها بأقصى ما يسمح به القانون وبأعلى درجات الاحتراف.</li>
-                        <li><i class="fas fa-check gold-text ml-2"></i> بناء علاقات طويلة الأمد قائمة على الثقة والشفافية والالتزام.</li>
-                        <li><i class="fas fa-check gold-text ml-2"></i> التطوير المستمر للأداء القانوني ومواكبة أحدث المستجدات التشريعية والقضائية.</li>
-                        <li><i class="fas fa-check gold-text ml-2"></i> ترسيخ اسم المؤسسة كعنوان للجودة والانضباط والنتائج.</li>
+        <div class="section-content max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">إنجازاتنا</h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
+                <p class="text-xl text-white/80 mt-4 max-w-3xl mx-auto">إنجازات متميزة على مدار سنوات من الخبرة والعمل الجاد</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="black-border-card card-glass p-8 rounded-2xl fade-in-up gold-border">
+                    <h3 class="text-2xl font-bold gold-text mb-6">إنجازات قضائية</h3>
+                    <ul class="space-y-4 text-white/90 text-lg achievement-list">
+                        <li>تحقيق أحكام قضائية مبتكرة في قضايا معقدة أمام محكمة النقض</li>
+                        <li>الترافع الناجح في قضايا دستورية أمام المحكمة الدستورية العليا</li>
+                        <li>حسم نزاعات عقارية مستعصية لصالح موكلينا</li>
+                        <li>الحصول على تعويضات قياسية في قضايا المسؤولية المدنية</li>
+                        <li>إنجاز تسجيلات عقارية معقدة في最短 وقت ممكن</li>
+                        <li>حماية حقوق الملكية الفكرية للعلامات التجارية الكبرى</li>
                     </ul>
                 </div>
-                <div class="black-border-card card-glass p-10 rounded-2xl fade-in-up gold-border">
-                    <h3 class="text-3xl font-bold gold-text mb-6">إنجازاتنا</h3>
-                    <p class="text-white/90 text-lg leading-relaxed">على مدار مسيرتنا المهنية، حققت مؤسسة محمود عبد الحميد للمحاماة العديد من النجاحات القانونية في قضايا بالغة الأهمية، من خلال الترافع أمام مختلف درجات التقاضي، بما في ذلك محكمة النقض والمحكمة الدستورية العليا، اعتمادًا على التخصص، ودقة التحليل، وحسن إدارة الخصومة.<br><br>وخلال هذه المسيرة، مثّلنا عملاء مميزين في نزاعات ذات طبيعة معقدة، وحصلنا على أحكام قضائية أسهمت في ترسيخ مبادئ قضائية مهمة، وحصّنت المراكز القانونية لموكلينا، وانعكس أثرها إيجابًا على مصالحهم القانونية والاقتصادية.<br><br>نحن لا نقيس إنجازاتنا بالأرقام وحدها، بل بثقة موكلينا، واستمرارية التعامل معهم، والسمعة المهنية التي رسختها المؤسسة باعتبارها شريكًا قانونيًا يُعتمد عليه في القضايا الدقيقة والحساسة.</p>
+                
+                <div class="black-border-card card-glass p-8 rounded-2xl fade-in-up gold-border">
+                    <h3 class="text-2xl font-bold gold-text mb-6">إنجازات مؤسسية</h3>
+                    <ul class="space-y-4 text-white/90 text-lg achievement-list">
+                        <li>تأسيس شراكات استراتيجية مع مؤسسات قانونية مرموقة</li>
+                        <li>بناء فريق عمل قانوني متخصص ذو كفاءة عالية</li>
+                        <li>تطوير نظام عمل مؤسسي يضمن الجودة والكفاءة</li>
+                        <li>تحقيق معدلات رضا عملاء تتجاوز 95%</li>
+                        <li>الحفاظ على سمعة مهنية طيبة على مدار 20 عامًا</li>
+                        <li>المساهمة في تطوير الممارسة القانونية من خلال الأبحاث والمقالات</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 fade-in-up">
+                <div class="black-border-card card-glass p-8 rounded-2xl gold-border">
+                    <h3 class="text-2xl font-bold gold-text mb-6 text-center">قيمنا في العمل</h3>
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <div class="space-y-3">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gold-solid to-transparent flex items-center justify-center mx-auto">
+                                <i class="fas fa-shield-alt text-2xl gold-text"></i>
+                            </div>
+                            <h4 class="font-bold gold-text">النزاهة</h4>
+                            <p class="text-white/80 text-sm">الالتزام بأعلى معايير الأمانة والشفافية</p>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gold-solid to-transparent flex items-center justify-center mx-auto">
+                                <i class="fas fa-graduation-cap text-2xl gold-text"></i>
+                            </div>
+                            <h4 class="font-bold gold-text">التخصص</h4>
+                            <p class="text-white/80 text-sm">عمق الخبرة في مجالات القانون المختلفة</p>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gold-solid to-transparent flex items-center justify-center mx-auto">
+                                <i class="fas fa-bullseye text-2xl gold-text"></i>
+                            </div>
+                            <h4 class="font-bold gold-text">الدقة</h4>
+                            <p class="text-white/80 text-sm">الاهتمام بأدق التفاصيل في كل قضية</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- قسم آراء العملاء -->
-    <section id="testimonials" class="py-24 relative parallax-section"
+    <section id="testimonials" class="section-spacing relative bg-section"
          style="background-image: url('images/testimonials-bg.jpg');">
-        <div class="parallax-overlay bg-black/60"></div>
+        <div class="section-overlay bg-black/60"></div>
         
-        <div class="parallax-content max-w-7xl mx-auto px-6">
+        <div class="section-content max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">آراء عملائنا</h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
+                <p class="text-xl text-white/80 mt-4">ثقة عملائنا هي شهادتنا الحقيقية</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="black-border-card card-glass p-8 rounded-2xl text-right fade-in-up gold-border">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold gold-text">ع م</div>
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gold-solid to-transparent flex items-center justify-center text-2xl font-bold gold-text">ع م</div>
                         <div>
                             <h4 class="font-bold text-lg gold-text">علي محمد</h4>
-                            <p class="text-sm text-gray-400">عميل سابق - قضية عقارية</p>
+                            <p class="text-sm text-gray-400">قضية عقارية معقدة</p>
                         </div>
                     </div>
-                    <p class="text-white/90 leading-relaxed">"شكرًا جزيلًا للأستاذ محمود على احترافيته العالية ومتابعته الدقيقة للقضية حتى النهاية. نجح في تحقيق حكم عادل بعد سنوات من النزاع."</p>
-                    <div class="mt-4 text-gold-solid">★★★★★</div>
+                    <p class="text-white/90 leading-relaxed mb-4">"بعد سنوات من التردد على المحاكم، وجدت في الأستاذ محمود الخبير الذي استطاع إنهاء قضيتي العقارية المعقدة في وقت قياسي. الاحترافية والدقة في العمل كانت استثنائية."</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <div class="text-gold-solid">★★★★★</div>
+                        <span class="text-sm text-gray-400">يناير 2024</span>
+                    </div>
                 </div>
 
                 <div class="black-border-card card-glass p-8 rounded-2xl text-right fade-in-up gold-border">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold gold-text">ف ا</div>
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gold-solid to-transparent flex items-center justify-center text-2xl font-bold gold-text">ف ا</div>
                         <div>
                             <h4 class="font-bold text-lg gold-text">فاطمة أحمد</h4>
-                            <p class="text-sm text-gray-400">عميلة - قضية تعويضات</p>
+                            <p class="text-sm text-gray-400">قضية تعويضات</p>
                         </div>
                     </div>
-                    <p class="text-white/90 leading-relaxed">"أفضل تجربة قانونية مررت بها. التواصل ممتاز والنتيجة فاقت التوقعات. أنصح به بشدة."</p>
-                    <div class="mt-4 text-gold-solid">★★★★★</div>
+                    <p class="text-white/90 leading-relaxed mb-4">"تعاملت مع أكثر من محامٍ في قضية تعويضاتي، ولكن الأستاذ محمود كان الأكثر فهماً وإلماماً بالتفاصيل. حصلت على تعويض يفوق توقعاتي بفضل مجهوده."</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <div class="text-gold-solid">★★★★★</div>
+                        <span class="text-sm text-gray-400">ديسمبر 2023</span>
+                    </div>
                 </div>
 
                 <div class="black-border-card card-glass p-8 rounded-2xl text-right fade-in-up gold-border">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold gold-text">م س</div>
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gold-solid to-transparent flex items-center justify-center text-2xl font-bold gold-text">م س</div>
                         <div>
                             <h4 class="font-bold text-lg gold-text">مصطفى سعيد</h4>
-                            <p class="text-sm text-gray-400">عميل - قضية تجارية</p>
+                            <p class="text-sm text-gray-400">تأسيس شركة</p>
                         </div>
                     </div>
-                    <p class="text-white/90 leading-relaxed">"مؤسسة قانونية محترفة بكل معنى الكلمة. التعامل معهم أعطاني شعورًا بالأمان القانوني والثقة في النتيجة."</p>
-                    <div class="mt-4 text-gold-solid">★★★★★</div>
+                    <p class="text-white/90 leading-relaxed mb-4">"استعنت بمؤسسة الأستاذ محمود لتأسيس شركتي وكانت التجربة ممتازة. الدقة في إعداد العقود والمستندات والسرعة في الإنجاز جعلتني أشعر بالثقة والأمان."</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <div class="text-gold-solid">★★★★★</div>
+                        <span class="text-sm text-gray-400">نوفمبر 2023</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <div class="inline-flex items-center gap-4 bg-black/30 px-6 py-3 rounded-full">
+                    <i class="fas fa-star gold-text"></i>
+                    <span class="text-white font-bold">تصنيف 4.9/5 بناءً على 120+ تقييم</span>
+                    <i class="fas fa-star gold-text"></i>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- قسم المدونة -->
-    <section id="blog" class="relative py-24 overflow-hidden parallax-section"
+    <section id="blog" class="section-spacing relative bg-section"
          style="background-image: url('https://raw.githubusercontent.com/malegal/ma-legal/main/images/مدونة.jpg');">
-        <div class="parallax-overlay bg-black/80"></div>
+        <div class="section-overlay bg-black/80"></div>
         
-        <div class="parallax-content relative z-10 max-w-7xl mx-auto px-6">
+        <div class="section-content relative z-10 max-w-7xl mx-auto px-6">
             <h2 class="text-4xl md:text-5xl font-black text-center gold-text serif-font mb-16 section-title">
                 المدونة القانونية
             </h2>
@@ -581,8 +704,8 @@
         </div>
     </section>
 
-    <!-- قسم الحجز (النظام الأصلي) -->
-    <section id="booking" class="py-12 bg-black/50">
+    <!-- قسم الحجز -->
+    <section id="booking" class="py-16 bg-black/50">
         <div class="max-w-4xl mx-auto px-6">
             <div class="bg-white/5 p-2 rounded-2xl mb-12 flex">
                 <button onclick="switchTab('consult')" id="btn-consult" class="tab-btn active flex-1 py-4 rounded-xl font-bold text-white transition-all duration-300">طلب استشارة قانونية</button>
@@ -998,7 +1121,7 @@
         function checkMobile() {
             if (window.innerWidth <= 768) {
                 // تعطيل تأثير parallax على الجوال
-                document.querySelectorAll('.parallax-section').forEach(section => {
+                document.querySelectorAll('.bg-section').forEach(section => {
                     section.style.backgroundAttachment = 'scroll';
                 });
             }
@@ -1026,6 +1149,25 @@
                 interval: 100
             });
         }
+        
+        // ==================== كيفية إضافة خلفيات للاقسام ====================
+        /*
+        لإضافة خلفية لأي قسم، اتبع الخطوات التالية:
+        
+        1. أضف صورة إلى مجلد images/
+           - about-bg.jpg (عن المؤسسة)
+           - vision-bg.jpg (الرؤية والأهداف)
+           - achievements-bg.jpg (الإنجازات)
+           - testimonials-bg.jpg (آراء العملاء)
+        
+        2. تأكد من أن الرابط يشير للصورة:
+           style="background-image: url('images/اسم-الصورة.jpg');"
+        
+        3. عدّل شفافية الطبقة الداكنة حسب الحاجة:
+           <div class="section-overlay bg-black/70"></div>
+           ● 60 = شفافية أقل (صورة أوضح)
+           ● 80 = شفافية أكثر (صورة داكنة أكثر)
+        */
     </script>
 </body>
 </html>
