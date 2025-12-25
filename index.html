@@ -299,14 +299,26 @@
     </div>
 </section>
     
-    <section id="blog" class="py-24 bg-white/[0.02]">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-16">المدونة القانونية</h2>
-            <div id="blog-posts" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-                <p class="text-center text-white/60 col-span-full">جاري تحميل المقالات...</p>
-            </div>
+    <section id="blog" class="relative py-24 overflow-hidden bg-primary-dark">
+    <!-- خلفية الرفوف الخفيفة -->
+    <img 
+        src="images/blog-background-long-shelves.jpg" 
+        alt="خلفية مكتبة قانونية تاريخية مع رفوف طويلة" 
+        class="absolute inset-0 w-full h-full object-cover opacity-20 z-0"
+    >
+
+    <!-- المحتوى فوق الخلفية -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-black text-center gold-text serif-font mb-16">
+            المدونة القانونية
+        </h2>
+
+        <div id="blog-posts" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- هنا بطاقات المقالات (هتفضل زي ما هي) -->
+            <!-- الجافاسكريبت هيحط الكروت تلقائيًا هنا -->
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="booking" class="py-12">
         <div class="max-w-4xl mx-auto px-6">
