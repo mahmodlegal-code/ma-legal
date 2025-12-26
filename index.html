@@ -344,8 +344,8 @@
                 <a href="#specialties" class="text-white hover:gold-text transition">تخصصاتنا</a>
                 <a href="#vision" class="text-white hover:gold-text transition">الرؤية والأهداف</a>
                 <a href="#blog" class="text-white hover:gold-text transition">المدونة</a>
-                <a href="#booking" onclick="switchTab('consult'); document.getElementById('booking').scrollIntoView({behavior: 'smooth'});"
-   class="gold-btn px-6 py-2.5 rounded-lg text-xs">طلب استشارة فورية</a>
+                <a href="#booking" onclick="switchTabAndScroll('consult')"
+                   class="gold-btn px-6 py-2.5 rounded-lg text-xs">طلب استشارة فورية</a>
             </div>
             <button id="menu-toggle" class="lg:hidden text-2xl gold-text">
                 <i class="fas fa-bars-staggered"></i>
@@ -363,7 +363,7 @@
             <a href="#specialties" onclick="closeMenu()" class="gold-text">تخصصاتنا القانونية</a>
             <a href="#vision" onclick="closeMenu()" class="gold-text">الرؤية والأهداف</a>
             <a href="#blog" onclick="closeMenu()" class="gold-text">المدونة</a>
-            <a href="#booking" onclick="closeMenu()" class="gold-text">حجز استشارة</a>
+            <a href="#booking" onclick="closeMenu(); switchTab('consult')" class="gold-text">طلب استشارة فورية</a>
         </div>
     </div>
 
@@ -409,11 +409,11 @@
             </div>
             
             <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                <a href="#booking" class="gold-btn px-10 sm:px-12 py-4 rounded-xl text-base sm:text-lg font-black uppercase tracking-widest">
+                <a href="#booking" onclick="switchTabAndScroll('consult')" class="gold-btn px-10 sm:px-12 py-4 rounded-xl text-base sm:text-lg font-black uppercase tracking-widest">
                     طلب استشارة قانونية
                 </a>
                 <a href="#booking" 
-                   onclick="switchTab('visit'); document.getElementById('booking').scrollIntoView({behavior: 'smooth'});"
+                   onclick="switchTabAndScroll('visit')"
                    class="px-10 sm:px-12 py-4 border border-white/20 rounded-xl hover:bg-white/10 transition text-white text-base sm:text-lg">
                     حجز موعد مقابلة
                 </a>
@@ -859,6 +859,19 @@
         document.addEventListener('DOMContentLoaded', function() {
             initializeSite();
             loadBlogPosts(); // تحميل المقالات مباشرة
+            
+            // التحقق مما إذا كان هناك نوع تبويب محدد في الرابط
+            const urlParams = new URLSearchParams(window.location.search);
+            const tabType = urlParams.get('tab');
+            if (tabType === 'consult' || tabType === 'visit') {
+                // الانتقال إلى قسم الحجز ثم تبديل التبويب
+                setTimeout(() => {
+                    document.getElementById('booking').scrollIntoView({behavior: 'smooth'});
+                    setTimeout(() => {
+                        switchTab(tabType);
+                    }, 300);
+                }, 100);
+            }
         });
         
         // ==================== إدارة القائمة المتنقلة ====================
@@ -905,6 +918,17 @@
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.remove('active');
             document.body.style.overflow = '';
+        }
+        
+        // ==================== وظيفة جديدة: تبديل التبويب والتمرير ====================
+        function switchTabAndScroll(tabType) {
+            // التمرير السلس إلى قسم الحجز
+            document.getElementById('booking').scrollIntoView({behavior: 'smooth'});
+            
+            // تبديل التبويب بعد تأخير قصير للسماح بالتمرير
+            setTimeout(() => {
+                switchTab(tabType);
+            }, 500);
         }
         
         // ==================== تحسينات للصور ====================
