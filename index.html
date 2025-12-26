@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://unpkg.com/gray-matter@4.0.3/dist/gray-matter.min.js"></script>
     <style>
@@ -155,37 +155,12 @@
             margin-top: 10px; 
         }
         
-        /* شريط تنقل ذهبي جديد */
+        /* شريط تنقل ذهبي */
         .header-glass {
             background: rgba(0, 0, 0, 0.95) !important;
             backdrop-filter: blur(20px);
             border-bottom: 2px solid var(--gold-solid);
             box-shadow: 0 5px 30px rgba(191, 149, 63, 0.3);
-        }
-        
-        /* روابط التنقل الذهبية */
-        .nav-link {
-            position: relative;
-            transition: color 0.3s;
-        }
-        
-        .nav-link:hover {
-            color: var(--gold-solid) !important;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold-gradient);
-            transition: width 0.3s;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
         }
         
         /* تأثيرات خاصة للصور الخلفية */
@@ -237,10 +212,6 @@
             .gold-btn {
                 padding: 12px 20px !important;
                 font-size: 14px !important;
-            }
-            
-            .header-glass {
-                border-bottom: 1px solid var(--gold-solid);
             }
         }
         
@@ -315,36 +286,6 @@
             padding-bottom: 6rem;
         }
         
-        /* تصميم جديد للنقاط */
-        .achievement-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .achievement-list li {
-            position: relative;
-            padding-right: 2.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        
-        .achievement-list li::before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 1.8rem;
-            height: 1.8rem;
-            background: var(--gold-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1a1a1a;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        
         /* تحسينات المدونة */
         .blog-post-card {
             height: 100%;
@@ -380,31 +321,6 @@
             border-radius: 0.5rem;
             transition: all 0.3s ease;
         }
-        
-        /* تعديلات لشريط التنقل الذهبي */
-        .gold-nav {
-            background: rgba(15, 23, 42, 0.95);
-            border-bottom: 2px solid var(--gold-solid);
-        }
-        
-        .gold-nav a:hover {
-            color: var(--gold-solid) !important;
-        }
-        
-        /* تأثيرات للروابط الذهبية */
-        .gold-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .gold-hover:hover {
-            color: var(--gold-solid) !important;
-            transform: translateY(-2px);
-        }
-        
-        /* تحسينات للنصوص الذهبية */
-        .gold-shadow {
-            text-shadow: 0 0 10px rgba(191, 149, 63, 0.3);
-        }
     </style>
 </head>
 <body>
@@ -414,8 +330,8 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- الهيدر مع شريط التنقل الذهبي -->
-    <header class="fixed w-full z-[100] header-glass gold-nav">
+    <!-- الهيدر -->
+    <header class="fixed w-full z-[100] header-glass">
         <nav class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-4">
                 <img src="logo.png" alt="شعار مؤسسة محمود عبد الحميد" class="w-28 h-28 object-contain">
@@ -425,10 +341,10 @@
                 </div>
             </div>
             <div class="hidden lg:flex items-center gap-8 font-bold text-sm">
-                <a href="#about" class="nav-link text-white hover:text-gold-solid transition gold-hover">عن المؤسسة</a>
-                <a href="#specialties" class="nav-link text-white hover:text-gold-solid transition gold-hover">تخصصاتنا</a>
-                <a href="#vision" class="nav-link text-white hover:text-gold-solid transition gold-hover">الرؤية والأهداف</a>
-                <a href="#blog" class="nav-link text-white hover:text-gold-solid transition gold-hover">المدونة</a>
+                <a href="#about" class="text-white hover:gold-text transition">عن المؤسسة</a>
+                <a href="#specialties" class="text-white hover:gold-text transition">تخصصاتنا</a>
+                <a href="#vision" class="text-white hover:gold-text transition">الرؤية والأهداف</a>
+                <a href="#blog" class="text-white hover:gold-text transition">المدونة</a>
                 <a href="#booking" class="gold-btn px-6 py-2.5 rounded-lg text-xs">طلب استشارة فورية</a>
             </div>
             <button id="menu-toggle" class="lg:hidden text-2xl gold-text">
@@ -443,11 +359,11 @@
             <i class="fas fa-times"></i>
         </button>
         <div class="flex flex-col gap-8 mt-20 text-2xl font-bold">
-            <a href="#about" onclick="closeMenu()" class="gold-text gold-hover">عن المؤسسة</a>
-            <a href="#specialties" onclick="closeMenu()" class="gold-text gold-hover">تخصصاتنا القانونية</a>
-            <a href="#vision" onclick="closeMenu()" class="gold-text gold-hover">الرؤية والأهداف</a>
-            <a href="#blog" onclick="closeMenu()" class="gold-text gold-hover">المدونة</a>
-            <a href="#booking" onclick="closeMenu()" class="gold-text gold-hover">حجز استشارة</a>
+            <a href="#about" onclick="closeMenu()" class="gold-text">عن المؤسسة</a>
+            <a href="#specialties" onclick="closeMenu()" class="gold-text">تخصصاتنا القانونية</a>
+            <a href="#vision" onclick="closeMenu()" class="gold-text">الرؤية والأهداف</a>
+            <a href="#blog" onclick="closeMenu()" class="gold-text">المدونة</a>
+            <a href="#booking" onclick="closeMenu()" class="gold-text">حجز استشارة</a>
         </div>
     </div>
 
@@ -463,7 +379,7 @@
             
             <h1 class="mb-8 md:mb-10">
                 <span class="block text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[7rem] 
-                            font-black serif-font gold-text leading-tight tracking-wide gold-shadow">
+                            font-black serif-font gold-text leading-tight tracking-wide">
                     محمود عبد الحميد
                 </span>
             </h1>
@@ -516,7 +432,7 @@
             </div>
 
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title gold-shadow">عن المؤسسة</h2>
+                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">عن المؤسسة</h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
             </div>
 
@@ -537,7 +453,7 @@
                 </div>
                 
                 <div class="space-y-3">
-                    <h3 class="text-3xl sm:text-3.5xl md:text-4xl font-black gold-text serif-font gold-shadow">
+                    <h3 class="text-3xl sm:text-3.5xl md:text-4xl font-black gold-text serif-font">
                         الأستاذ محمود عبد الحميد
                     </h3>
                     <p class="text-xl sm:text-2xl text-white font-bold">
@@ -557,7 +473,7 @@
         
         <div class="section-content max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title gold-shadow">تخصصاتنا القانونية</h2>
+                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">تخصصاتنا القانونية</h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
             </div>
             
@@ -600,13 +516,13 @@
         
         <div class="section-content max-w-7xl mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title gold-shadow">الرؤية والأهداف</h2>
+                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">الرؤية والأهداف</h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="black-border-card card-glass p-8 rounded-2xl fade-in-up gold-border">
-                    <h3 class="text-3xl font-bold gold-text mb-6 gold-shadow">رؤيتنا</h3>
+                    <h3 class="text-3xl font-bold gold-text mb-6">رؤيتنا</h3>
                     <p class="text-white/90 text-lg leading-relaxed mb-6">نسعى لأن نكون مؤسسة قانونية مرجعية يُعتمد عليها في تقديم الحلول القانونية المتكاملة، وأن نرسّخ حضورًا مهنيًا قويًا يجمع بين عمق الخبرة القانونية والرؤية الحديثة لممارسة المحاماة.</p>
                     <ul class="space-y-3">
                         <li class="flex items-start">
@@ -625,13 +541,28 @@
                 </div>
                 
                 <div class="black-border-card card-glass p-8 rounded-2xl fade-in-up gold-border">
-                    <h3 class="text-3xl font-bold gold-text mb-6 gold-shadow">أهدافنا</h3>
-                    <ul class="space-y-4 text-white/90 text-lg achievement-list">
-                        <li>تقديم خدمات قانونية دقيقة ومبنية على دراسة متأنية لكل حالة على حدة.</li>
-                        <li>حماية حقوق موكلينا والدفاع عنها بأقصى ما يسمح به القانون وبأعلى درجات الاحتراف.</li>
-                        <li>بناء علاقات طويلة الأمد قائمة على الثقة والشفافية والالتزام.</li>
-                        <li>التطوير المستمر للأداء القانوني ومواكبة أحدث المستجدات التشريعية والقضائية.</li>
-                        <li>ترسيخ اسم المؤسسة كعنوان للجودة والانضباط والنتائج.</li>
+                    <h3 class="text-3xl font-bold gold-text mb-6">أهدافنا</h3>
+                    <ul class="space-y-4 text-white/90 text-lg">
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>تقديم خدمات قانونية دقيقة ومبنية على دراسة متأنية لكل حالة على حدة.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>حماية حقوق موكلينا والدفاع عنها بأقصى ما يسمح به القانون وبأعلى درجات الاحتراف.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>بناء علاقات طويلة الأمد قائمة على الثقة والشفافية والالتزام.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>التطوير المستمر للأداء القانوني ومواكبة أحدث المستجدات التشريعية والقضائية.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>ترسيخ اسم المؤسسة كعنوان للجودة والانضباط والنتائج.</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -644,40 +575,76 @@
         
         <div class="section-content max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title gold-shadow">إنجازاتنا</h2>
+                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">إنجازاتنا</h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
                 <p class="text-xl text-white/80 mt-4 max-w-3xl mx-auto">إنجازات متميزة على مدار سنوات من الخبرة والعمل الجاد</p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="black-border-card card-glass p-8 rounded-2xl fade-in-up gold-border">
-                    <h3 class="text-2xl font-bold gold-text mb-6 gold-shadow">إنجازات قضائية</h3>
-                    <ul class="space-y-4 text-white/90 text-lg achievement-list">
-                        <li>تحقيق أحكام قضائية مبتكرة في قضايا معقدة أمام محكمة النقض</li>
-                        <li>الترافع الناجح في قضايا دستورية أمام المحكمة الدستورية العليا</li>
-                        <li>حسم نزاعات عقارية مستعصية لصالح موكلينا</li>
-                        <li>الحصول على تعويضات قياسية في قضايا المسؤولية المدنية</li>
-                        <li>إنجاز تسجيلات عقارية معقدة في最短 وقت ممكن</li>
-                        <li>حماية حقوق الملكية الفكرية للعلامات التجارية الكبرى</li>
+                    <h3 class="text-2xl font-bold gold-text mb-6">إنجازات قضائية</h3>
+                    <ul class="space-y-4 text-white/90 text-lg">
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>تحقيق أحكام قضائية مبتكرة في قضايا معقدة أمام محكمة النقض</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>الترافع الناجح في قضايا دستورية أمام المحكمة الدستورية العليا</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>حسم نزاعات عقارية مستعصية لصالح موكلينا</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>الحصول على تعويضات قياسية في قضايا المسؤولية المدنية</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>إنجاز تسجيلات عقارية معقدة في最短 وقت ممكن</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>حماية حقوق الملكية الفكرية للعلامات التجارية الكبرى</span>
+                        </li>
                     </ul>
                 </div>
                 
                 <div class="black-border-card card-glass p-8 rounded-2xl fade-in-up gold-border">
-                    <h3 class="text-2xl font-bold gold-text mb-6 gold-shadow">إنجازات مؤسسية</h3>
-                    <ul class="space-y-4 text-white/90 text-lg achievement-list">
-                        <li>تأسيس شراكات استراتيجية مع مؤسسات قانونية مرموقة</li>
-                        <li>بناء فريق عمل قانوني متخصص ذو كفاءة عالية</li>
-                        <li>تطوير نظام عمل مؤسسي يضمن الجودة والكفاءة</li>
-                        <li>تحقيق معدلات رضا عملاء تتجاوز 95%</li>
-                        <li>الحفاظ على سمعة مهنية طيبة على مدار 20 عامًا</li>
-                        <li>المساهمة في تطوير الممارسة القانونية من خلال الأبحاث والمقالات</li>
+                    <h3 class="text-2xl font-bold gold-text mb-6">إنجازات مؤسسية</h3>
+                    <ul class="space-y-4 text-white/90 text-lg">
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>تأسيس شراكات استراتيجية مع مؤسسات قانونية مرموقة</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>بناء فريق عمل قانوني متخصص ذو كفاءة عالية</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>تطوير نظام عمل مؤسسي يضمن الجودة والكفاءة</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>تحقيق معدلات رضا عملاء تتجاوز 95%</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>الحفاظ على سمعة مهنية طيبة على مدار 20 عامًا</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check gold-text ml-3 mt-1"></i>
+                            <span>المساهمة في تطوير الممارسة القانونية من خلال الأبحاث والمقالات</span>
+                        </li>
                     </ul>
                 </div>
             </div>
             
             <div class="mt-12 fade-in-up">
                 <div class="black-border-card card-glass p-8 rounded-2xl gold-border">
-                    <h3 class="text-2xl font-bold gold-text mb-6 text-center gold-shadow">قيمنا في العمل</h3>
+                    <h3 class="text-2xl font-bold gold-text mb-6 text-center">قيمنا في العمل</h3>
                     <div class="grid md:grid-cols-3 gap-6 text-center">
                         <div class="space-y-3">
                             <div class="w-16 h-16 rounded-full bg-gradient-to-br from-gold-solid to-transparent flex items-center justify-center mx-auto">
@@ -712,7 +679,7 @@
         
         <div class="section-content max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title gold-shadow">آراء عملائنا</h2>
+                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">آراء عملائنا</h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
                 <p class="text-xl text-white/80 mt-4">ثقة عملائنا هي شهادتنا الحقيقية</p>
             </div>
@@ -780,7 +747,7 @@
         
         <div class="section-content relative z-10 max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title gold-shadow">المدونة القانونية</h2>
+                <h2 class="text-4xl md:text-5xl font-black serif-font gold-text mb-6 section-title">المدونة القانونية</h2>
                 <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold-solid to-transparent mx-auto"></div>
                 <p class="text-xl text-white/80 mt-4 max-w-3xl mx-auto">أحدث المقالات والأبحاث القانونية لتطوير معرفتك القانونية</p>
             </div>
@@ -811,7 +778,7 @@
 
             <!-- نموذج الاستشارة -->
             <div id="consult-form" class="card-glass p-10 border-t-4 border-gold-solid gold-border">
-                <h3 class="text-2xl font-bold gold-text mb-6 gold-shadow">نموذج الاستشارة السريعة</h3>
+                <h3 class="text-2xl font-bold gold-text mb-6">نموذج الاستشارة السريعة</h3>
                 <form id="consultFormAction" class="space-y-6">
                     <input type="text" id="consultName" placeholder="الاسم بالكامل" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-gold-solid text-white" required>
                     <input type="tel" id="consultPhone" placeholder="رقم الواتساب" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-gold-solid text-white" required>
@@ -822,7 +789,7 @@
 
             <!-- نموذج حجز الموعد -->
             <div id="visit-form" class="card-glass p-10 border-t-4 border-gold-solid gold-border hidden">
-                <h3 class="text-2xl font-bold gold-text mb-6 gold-shadow">حجز موعد في المكتب</h3>
+                <h3 class="text-2xl font-bold gold-text mb-6">حجز موعد في المكتب</h3>
                 <form id="visitFormAction" class="space-y-6">
                     <input type="text" id="visitName" placeholder="الاسم بالكامل" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-gold-solid text-white" required>
                     <input type="tel" id="visitPhone" placeholder="رقم الهاتف" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl outline-none focus:border-gold-solid text-white" required>
@@ -857,18 +824,18 @@
             <div class="text-center mb-4">
                 <img src="logo.png" alt="شعار مؤسسة محمود عبد الحميد" class="w-32 h-32 object-contain mx-auto mb-3 enhanced-image">
                 
-                <h2 class="text-2xl md:text-3xl font-black gold-text serif-font gold-shadow">مؤسسة</h2>
-                <h2 class="text-2xl md:text-3xl font-black gold-text serif-font gold-shadow">محمود عبد الحميد</h2>
+                <h2 class="text-2xl md:text-3xl font-black gold-text serif-font">مؤسسة</h2>
+                <h2 class="text-2xl md:text-3xl font-black gold-text serif-font">محمود عبد الحميد</h2>
                 <p class="text-base md:text-lg text-white/90 font-bold mt-1">المحامي بالنقض والدستورية العليا</p>
                 
                 <p class="text-sm text-gray-400 mt-2"><i class="fas fa-map-marker-alt gold-text ml-1"></i> أسوان - أمام مجمع المحاكم</p>
             </div>
 
             <div class="flex justify-center gap-8 text-white/60 mb-8 text-2xl">
-                <a href="https://wa.me/201101076000" target="_blank" class="hover:gold-text gold-hover"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.facebook.com/malegal" target="_blank" class="hover:gold-text gold-hover"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/in/mahmoud-abdel-hamid-0a4664374" target="_blank" class="hover:gold-text gold-hover"><i class="fab fa-linkedin-in"></i></a>
-                <a href="mailto:ma.legal.eg@outlook.com" class="hover:gold-text gold-hover"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/201101076000" target="_blank" class="hover:gold-text"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/malegal" target="_blank" class="hover:gold-text"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/mahmoud-abdel-hamid-0a4664374" target="_blank" class="hover:gold-text"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:ma.legal.eg@outlook.com" class="hover:gold-text"><i class="fas fa-envelope"></i></a>
             </div>
             <p class="text-white/40 text-xs uppercase tracking-widest">جميع الحقوق محفوظة © ٢٠٢٥</p>
         </div>
@@ -881,12 +848,12 @@
                 <i class="fas fa-times"></i>
             </button>
             <img id="modal-image" class="w-full h-64 object-cover rounded-2xl mb-8 enhanced-image" src="" alt="">
-            <h2 id="modal-title" class="text-4xl font-black gold-text mb-6 text-right gold-shadow"></h2>
+            <h2 id="modal-title" class="text-4xl font-black gold-text mb-6 text-right"></h2>
             <div id="modal-content" class="text-white/90 text-lg leading-relaxed prose prose-invert max-w-none text-right"></div>
         </div>
     </div>
 
-    <!-- السكريبت الرئيسي مع نظام المدونة الجديد -->
+    <!-- السكريبت الرئيسي مع نظام المدونة المبسط -->
     <script>
         // ==================== تهيئة عامة ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1041,250 +1008,189 @@
             });
         }
         
-        // ==================== نظام المدونة الجديد ====================
+        // ==================== نظام المدونة المبسط ====================
         async function loadBlogPosts() {
-    const container = document.getElementById('blog-posts');
-    const noPostsMessage = document.getElementById('no-posts-message');
-    
-    console.log('🚀 بدء تحميل المدونة من:', window.location.origin);
-    
-    // محاولات متعددة لتحميل الملف
-    const possiblePaths = [
-        '/blog-config.json',
-        'blog-config.json',
-        window.location.origin + '/blog-config.json',
-        './blog-config.json'
-    ];
-    
-    for (const path of possiblePaths) {
-        try {
-            console.log('🔄 محاولة تحميل من:', path);
-            const response = await fetch(path);
+            const container = document.getElementById('blog-posts');
+            const noPostsMessage = document.getElementById('no-posts-message');
             
-            if (response.ok) {
-                const articles = await response.json();
-                console.log('✅ تم تحميل', articles.length, 'مقالة من', path);
-                
-                if (articles && articles.length > 0) {
-                    displayArticles(articles);
-                    return;
-                }
-            }
-        } catch (error) {
-            console.log('⚠️ فشلت محاولة', path, ':', error.message);
-        }
-    }
-    
-    // إذا فشلت جميع المحاولات
-    console.log('❌ فشل تحميل المقالات، عرض رسالة الخطأ');
-    container.innerHTML = `
-        <div class="col-span-3 text-center py-12">
-            <p class="text-red-400 mb-4">تعذر تحميل المقالات</p>
-            <p class="text-white/60 text-sm mb-4">الملف موجود ولكن حدث خطأ في التحميل</p>
-            <button onclick="loadBlogPosts()" class="gold-btn px-6 py-2 rounded-lg">
-                إعادة المحاولة
-            </button>
-        </div>
-    `;
-    
-    function displayArticles(articles) {
-        container.innerHTML = '';
-        
-        articles.forEach((article, index) => {
-            const card = document.createElement('div');
-            card.className = 'blog-post-card black-border-card card-glass rounded-2xl overflow-hidden fade-in-up gold-border';
-            card.style.transitionDelay = `${index * 0.1}s`;
+            console.log('🚀 بدء تحميل المدونة');
             
-            // تنسيق التاريخ
-            let formattedDate = 'تاريخ غير معروف';
+            // محاولة تحميل blog-config.json
             try {
-                if (article.date) {
-                    const dateObj = new Date(article.date);
-                    formattedDate = dateObj.toLocaleDateString('ar-EG', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
+                const response = await fetch('/blog-config.json');
+                
+                if (response.ok) {
+                    const articles = await response.json();
+                    console.log('✅ تم تحميل', articles.length, 'مقالة');
+                    
+                    if (articles && articles.length > 0) {
+                        displayArticles(articles);
+                        return;
+                    }
                 }
-            } catch (e) {
-                formattedDate = article.date || '2024-03-20';
+            } catch (error) {
+                console.log('⚠️ فشل تحميل المقالات:', error.message);
             }
             
-            card.innerHTML = `
-                <div class="blog-post-image-container">
-                    <img src="${article.image || '/blog/images/welcome.jpg'}" 
-                         alt="${article.title || 'مقال قانوني'}" 
-                         class="blog-post-image w-full h-64 object-cover"
-                         loading="lazy"
-                         onerror="this.src='/blog/images/welcome.jpg'">
-                </div>
-                <div class="blog-post-content p-6">
-                    <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-xl font-bold gold-text flex-1">${article.title || 'مقال جديد'}</h3>
-                        <span class="bg-gold-solid/20 text-gold-solid text-xs px-3 py-1 rounded-full">${formattedDate}</span>
-                    </div>
-                    <p class="blog-post-excerpt text-white/80 text-sm leading-relaxed mb-4">${article.description || 'مقال قانوني متخصص'}</p>
-                    <div class="mt-auto pt-4 border-t border-white/10">
-                        <button onclick="loadAndShowArticle('${article.id}')" 
-                                class="read-more-btn text-gold-solid hover:text-gold-600 font-bold text-sm">
-                            قراءة المزيد <i class="fas fa-arrow-left mr-1"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
+            // إذا فشل تحميل blog-config.json، استخدم مقالات افتراضية
+            console.log('🔄 استخدام مقالات افتراضية');
             
-            container.appendChild(card);
-        });
+            const defaultArticles = [
+                {
+                    id: 'welcome',
+                    title: 'مرحباً بكم في المدونة القانونية',
+                    date: '2024-03-20',
+                    description: 'المقال الافتتاحي للتعريف بخدماتنا القانونية',
+                    image: '/blog/images/welcome.jpg',
+                    file: 'blog/welcome.md'
+                },
+                {
+                    id: 'trademark',
+                    title: 'حماية العلامات التجارية في مصر',
+                    date: '2024-03-21',
+                    description: 'دليل شامل لحماية العلامات التجارية',
+                    image: '/blog/images/welcome.jpg',
+                    file: 'blog/trademark.md'
+                },
+                {
+                    id: 'civil-law',
+                    title: 'أساسيات القانون المدني',
+                    date: '2024-03-19',
+                    description: 'تعرف على أساسيات القانون المدني المصري',
+                    image: '/blog/images/welcome.jpg',
+                    file: 'blog/civil-law.md'
+                }
+            ];
+            
+            displayArticles(defaultArticles);
+        }
         
-        // حفظ للمودال
-        window.blogPosts = articles;
-        
-        // تفعيل تأثيرات الدخول
-        setTimeout(() => {
-            document.querySelectorAll('.fade-in-up').forEach(el => {
-                el.classList.add('visible');
-            });
-        }, 100);
-    }
-}
+        function displayArticles(articles) {
+            const container = document.getElementById('blog-posts');
+            const noPostsMessage = document.getElementById('no-posts-message');
+            
+            if (!articles || articles.length === 0) {
+                container.classList.add('hidden');
+                noPostsMessage.classList.remove('hidden');
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            articles.forEach((article, index) => {
+                const card = document.createElement('div');
+                card.className = 'blog-post-card black-border-card card-glass rounded-2xl overflow-hidden fade-in-up gold-border';
+                card.style.transitionDelay = `${index * 0.1}s`;
                 
-            } catch (error) {
-                console.error('خطأ في تحميل المقالات:', error);
-                container.innerHTML = `
-                    <div class="col-span-3 text-center py-12">
-                        <p class="text-red-400 mb-4">حدث خطأ في تحميل المقالات</p>
-                        <p class="text-white/60 text-sm">يرجى المحاولة مرة أخرى لاحقاً</p>
+                // تنسيق التاريخ
+                let formattedDate = 'تاريخ غير معروف';
+                try {
+                    if (article.date) {
+                        const dateObj = new Date(article.date);
+                        formattedDate = dateObj.toLocaleDateString('ar-EG', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+                    }
+                } catch (e) {
+                    formattedDate = article.date || '2024-03-20';
+                }
+                
+                card.innerHTML = `
+                    <div class="blog-post-image-container">
+                        <img src="${article.image || '/blog/images/welcome.jpg'}" 
+                             alt="${article.title || 'مقال قانوني'}" 
+                             class="blog-post-image w-full h-64 object-cover"
+                             loading="lazy"
+                             onerror="this.src='/blog/images/welcome.jpg'">
+                    </div>
+                    <div class="blog-post-content p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold gold-text flex-1">${article.title || 'مقال جديد'}</h3>
+                            <span class="bg-gold-solid/20 text-gold-solid text-xs px-3 py-1 rounded-full">${formattedDate}</span>
+                        </div>
+                        <p class="blog-post-excerpt text-white/80 text-sm leading-relaxed mb-4">${article.description || 'مقال قانوني متخصص'}</p>
+                        <div class="mt-auto pt-4 border-t border-white/10">
+                            <button onclick="showBlogPost('${article.id}')" 
+                                    class="read-more-btn text-gold-solid hover:text-gold-600 font-bold text-sm">
+                                قراءة المزيد <i class="fas fa-arrow-left mr-1"></i>
+                            </button>
+                        </div>
                     </div>
                 `;
-            }
+                
+                container.appendChild(card);
+            });
+            
+            // حفظ المقالات للعرض في المودال
+            window.blogPosts = articles;
+            
+            // تفعيل تأثيرات الدخول
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in-up').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+            
+            console.log('🎉 تم عرض', articles.length, 'مقالة');
         }
         
-        function createArticleCard(article, index) {
-            const card = document.createElement('div');
-            card.className = 'blog-post-card black-border-card card-glass rounded-2xl overflow-hidden fade-in-up gold-border';
-            card.style.transitionDelay = `${index * 0.1}s`;
+        // ==================== عرض مقال المدونة ====================
+        async function showBlogPost(articleId) {
+            console.log('📖 عرض المقال:', articleId);
             
-            // تنسيق التاريخ
-            let formattedDate = 'تاريخ غير معروف';
             try {
-                if (article.date) {
-                    const dateObj = new Date(article.date);
-                    formattedDate = dateObj.toLocaleDateString('ar-EG', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-                }
-            } catch (e) {
-                console.warn('خطأ في تنسيق التاريخ:', e);
-            }
-            
-            card.innerHTML = `
-                <div class="blog-post-image-container">
-                    <img src="${article.image || '/blog/images/welcome.jpg'}" 
-                         alt="${article.title || 'مقال قانوني'}" 
-                         class="blog-post-image w-full object-cover transition-transform duration-500 hover:scale-105"
-                         loading="lazy"
-                         onerror="this.src='/blog/images/welcome.jpg'">
-                </div>
-                <div class="blog-post-content p-6">
-                    <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-xl font-bold gold-text flex-1">${article.title || 'مقال جديد'}</h3>
-                        <span class="bg-gold-solid/20 text-gold-solid text-xs px-3 py-1 rounded-full whitespace-nowrap">${formattedDate}</span>
-                    </div>
-                    <p class="blog-post-excerpt text-white/80 text-sm leading-relaxed mb-4">${article.description || 'مقال قانوني متخصص'}</p>
-                    <div class="mt-auto pt-4 border-t border-white/10">
-                        <button onclick="loadAndShowArticle('${article.id || article.file || ''}')" class="read-more-btn text-gold-solid hover:text-gold-600 font-bold text-sm">
-                            قراءة المزيد <i class="fas fa-arrow-left mr-1"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            return card;
-        }
-        
-        // ==================== تحميل وعرض المقال ====================
-        async function loadAndShowArticle(articleId) {
-            try {
-                // إذا كان articleId يحتوي على مسار الملف
-                const filePath = articleId.includes('.md') ? articleId : `blog/${articleId}.md`;
+                // محاولة تحميل المقال الحقيقي
+                const response = await fetch(`blog/${articleId}.md`);
                 
-                // تحميل المقال من ملف .md
-                const response = await fetch(filePath);
-                const content = await response.text();
-                
-                // تحليل المحتوى باستخدام gray-matter
-                let parsed;
-                if (typeof window.grayMatter !== 'undefined') {
-                    parsed = window.grayMatter(content);
+                if (response.ok) {
+                    const content = await response.text();
+                    const modal = document.getElementById('post-modal');
+                    const modalImage = document.getElementById('modal-image');
+                    const modalTitle = document.getElementById('modal-title');
+                    const modalContent = document.getElementById('modal-content');
+                    
+                    // عرض الصورة والعنوان
+                    modalImage.src = '/blog/images/welcome.jpg';
+                    modalTitle.textContent = articleId === 'welcome' ? 'مرحباً بكم' : 'مقال قانوني';
+                    
+                    // تحويل Markdown إلى HTML إذا كانت المكتبة متاحة
+                    if (typeof window.marked !== 'undefined') {
+                        modalContent.innerHTML = window.marked.parse(content);
+                    } else {
+                        modalContent.innerHTML = `<pre>${content}</pre>`;
+                    }
+                    
+                    modal.classList.remove('hidden');
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    
                 } else {
-                    // حل بديل إذا لم تكن المكتبة متوفرة
-                    parsed = parseMarkdownManually(content);
+                    // إذا فشل تحميل المقال
+                    showArticleModal(
+                        'مقال غير متوفر',
+                        '<p>هذا المقال غير متوفر حالياً. يرجى المحاولة لاحقاً.</p>'
+                    );
                 }
-                
-                // استخدام marked لتحويل Markdown إلى HTML
-                let htmlContent;
-                if (typeof window.marked !== 'undefined') {
-                    htmlContent = window.marked.parse(parsed.content);
-                } else {
-                    htmlContent = `<pre>${parsed.content}</pre>`;
-                }
-                
-                // عرض في المودال
-                showArticleModal(parsed.data, htmlContent);
                 
             } catch (error) {
                 console.error('خطأ في تحميل المقال:', error);
-                alert('عفواً، حدث خطأ في تحميل المقال. يرجى التأكد من وجود الملف.');
+                showArticleModal(
+                    'خطأ في التحميل',
+                    '<p>حدث خطأ في تحميل المقال. يرجى المحاولة مرة أخرى.</p>'
+                );
             }
         }
         
-        function parseMarkdownManually(content) {
-            // تحليل يدوي لـ frontmatter إذا لم تكن gray-matter متوفرة
-            const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-            
-            if (frontmatterMatch) {
-                const frontmatter = frontmatterMatch[1];
-                const data = {};
-                const contentWithoutFrontmatter = content.slice(frontmatterMatch[0].length);
-                
-                // تحليل بسيط لـ frontmatter
-                const titleMatch = frontmatter.match(/title:\s*["'](.+?)["']/);
-                const imageMatch = frontmatter.match(/image:\s*["'](.+?)["']/);
-                
-                if (titleMatch) data.title = titleMatch[1];
-                if (imageMatch) data.image = imageMatch[1];
-                
-                return {
-                    data: data,
-                    content: contentWithoutFrontmatter.trim()
-                };
-            }
-            
-            return {
-                data: {},
-                content: content
-            };
-        }
-        
-        function showArticleModal(metadata, content) {
+        function showArticleModal(title, content) {
             const modal = document.getElementById('post-modal');
             const modalImage = document.getElementById('modal-image');
             const modalTitle = document.getElementById('modal-title');
             const modalContent = document.getElementById('modal-content');
             
-            // تعيين الصورة
-            if (metadata.image) {
-                modalImage.src = metadata.image;
-                modalImage.onerror = function() {
-                    this.src = '/blog/images/welcome.jpg';
-                };
-            } else {
-                modalImage.src = '/blog/images/welcome.jpg';
-            }
-            
-            modalTitle.textContent = metadata.title || 'مقال قانوني';
+            modalImage.src = '/blog/images/welcome.jpg';
+            modalTitle.textContent = title;
             modalContent.innerHTML = content;
             
             modal.classList.remove('hidden');
