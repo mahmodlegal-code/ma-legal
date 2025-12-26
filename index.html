@@ -1043,46 +1043,110 @@
         
         // ==================== نظام المدونة الجديد ====================
         async function loadBlogPosts() {
-            const container = document.getElementById('blog-posts');
-            const noPostsMessage = document.getElementById('no-posts-message');
+    const container = document.getElementById('blog-posts');
+    const noPostsMessage = document.getElementById('no-posts-message');
+    
+    console.log('🚀 بدء تحميل المدونة من:', window.location.origin);
+    
+    // محاولات متعددة لتحميل الملف
+    const possiblePaths = [
+        '/blog-config.json',
+        'blog-config.json',
+        window.location.origin + '/blog-config.json',
+        './blog-config.json'
+    ];
+    
+    for (const path of possiblePaths) {
+        try {
+            console.log('🔄 محاولة تحميل من:', path);
+            const response = await fetch(path);
             
-            if (!container) return;
+            if (response.ok) {
+                const articles = await response.json();
+                console.log('✅ تم تحميل', articles.length, 'مقالة من', path);
+                
+                if (articles && articles.length > 0) {
+                    displayArticles(articles);
+                    return;
+                }
+            }
+        } catch (error) {
+            console.log('⚠️ فشلت محاولة', path, ':', error.message);
+        }
+    }
+    
+    // إذا فشلت جميع المحاولات
+    console.log('❌ فشل تحميل المقالات، عرض رسالة الخطأ');
+    container.innerHTML = `
+        <div class="col-span-3 text-center py-12">
+            <p class="text-red-400 mb-4">تعذر تحميل المقالات</p>
+            <p class="text-white/60 text-sm mb-4">الملف موجود ولكن حدث خطأ في التحميل</p>
+            <button onclick="loadBlogPosts()" class="gold-btn px-6 py-2 rounded-lg">
+                إعادة المحاولة
+            </button>
+        </div>
+    `;
+    
+    function displayArticles(articles) {
+        container.innerHTML = '';
+        
+        articles.forEach((article, index) => {
+            const card = document.createElement('div');
+            card.className = 'blog-post-card black-border-card card-glass rounded-2xl overflow-hidden fade-in-up gold-border';
+            card.style.transitionDelay = `${index * 0.1}s`;
             
-            // عرض حالة التحميل
-            container.innerHTML = `
-                <div class="col-span-3 text-center py-12">
-                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gold-solid"></div>
-                    <p class="text-white/60 mt-4">جاري تحميل المقالات القانونية...</p>
+            // تنسيق التاريخ
+            let formattedDate = 'تاريخ غير معروف';
+            try {
+                if (article.date) {
+                    const dateObj = new Date(article.date);
+                    formattedDate = dateObj.toLocaleDateString('ar-EG', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                }
+            } catch (e) {
+                formattedDate = article.date || '2024-03-20';
+            }
+            
+            card.innerHTML = `
+                <div class="blog-post-image-container">
+                    <img src="${article.image || '/blog/images/welcome.jpg'}" 
+                         alt="${article.title || 'مقال قانوني'}" 
+                         class="blog-post-image w-full h-64 object-cover"
+                         loading="lazy"
+                         onerror="this.src='/blog/images/welcome.jpg'">
+                </div>
+                <div class="blog-post-content p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold gold-text flex-1">${article.title || 'مقال جديد'}</h3>
+                        <span class="bg-gold-solid/20 text-gold-solid text-xs px-3 py-1 rounded-full">${formattedDate}</span>
+                    </div>
+                    <p class="blog-post-excerpt text-white/80 text-sm leading-relaxed mb-4">${article.description || 'مقال قانوني متخصص'}</p>
+                    <div class="mt-auto pt-4 border-t border-white/10">
+                        <button onclick="loadAndShowArticle('${article.id}')" 
+                                class="read-more-btn text-gold-solid hover:text-gold-600 font-bold text-sm">
+                            قراءة المزيد <i class="fas fa-arrow-left mr-1"></i>
+                        </button>
+                    </div>
                 </div>
             `;
             
-            try {
-                // تحميل قائمة المقالات من blog-config.json
-                const response = await fetch('blog-config.json');
-                const articles = await response.json();
-                
-                if (!articles || articles.length === 0) {
-                    container.classList.add('hidden');
-                    noPostsMessage.classList.remove('hidden');
-                    return;
-                }
-                
-                // عرض المقالات
-                container.innerHTML = '';
-                articles.forEach((article, index) => {
-                    const card = createArticleCard(article, index);
-                    container.appendChild(card);
-                });
-                
-                // حفظ المقالات للعرض في المودال
-                window.blogPosts = articles;
-                
-                // تفعيل تأثيرات الدخول
-                setTimeout(() => {
-                    document.querySelectorAll('.fade-in-up').forEach(el => {
-                        el.classList.add('visible');
-                    });
-                }, 100);
+            container.appendChild(card);
+        });
+        
+        // حفظ للمودال
+        window.blogPosts = articles;
+        
+        // تفعيل تأثيرات الدخول
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 100);
+    }
+}
                 
             } catch (error) {
                 console.error('خطأ في تحميل المقالات:', error);
