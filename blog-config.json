@@ -2,9 +2,9 @@
   {
     "id": "welcome",
     "title": "مرحباً بكم في المدونة القانونية",
-    "date": "2024-01-01",
+    "date": "2024-03-20",
     "description": "المقال الافتتاحي للتعريف بخدماتنا القانونية المتخصصة",
     "image": "/blog/images/welcome.jpg",
-    "tags": ["ترحيب", "مقدمة"]
+    "file": "blog/welcome.md"
   }
 ]
